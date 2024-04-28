@@ -40,6 +40,15 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ],
+        'mobile_user' => [
+            'driver' => 'session',
+            'provider' => 'mobile_users',
+        ]
     ],
 
     /*
@@ -64,6 +73,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        // 'mobile_users' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\General\MobileUser::class,
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',

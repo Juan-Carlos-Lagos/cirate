@@ -2,10 +2,8 @@
     height: 100vh;
 }
 .accordion-item {
-    width: 100%; /* Puedes ajustar el valor según tus necesidades */
-}
-.car-center-sudo{
-    text-align: center;
+    /* Puedes ajustar el valor según tus necesidades */
+    /* width: 100%;  */
 }
 .car-center-sudo{
     text-align: center;

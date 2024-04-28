@@ -42,11 +42,16 @@ return [
     | to control the amount of time it takes to hash the given password.
     |
     */
-
     'argon' => [
-        'memory' => 65536,
-        'threads' => 1,
-        'time' => 4,
+        'memory' => 1024,
+        'threads' => 2,
+        'time' => 2,
     ],
+    //Original
+    // 'argon' => [
+    //     'memory' => 65536,
+    //     'threads' => 1,
+    //     'time' => 4,
+    // ],
 
 ];
