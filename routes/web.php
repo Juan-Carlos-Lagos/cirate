@@ -1,10 +1,17 @@
 <?php
+
 use App\Http\Controllers\auth\loginController as AuthLoginController;
+use App\Http\Controllers\BdController;
 use App\Http\Controllers\directorioController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PlantaController;
+use App\Http\Controllers\radioIdController;
+use App\Http\Controllers\radiosController;
+use App\Http\Controllers\reporteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuariosController;
+use App\Models\codigoreporteaccion;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,19 +28,63 @@ use App\Http\Controllers\UsuariosController;
 //login
 Route::prefix('auth')->group(function () {
 
-    Route::get('login', [AuthLoginController::class, 'login'])->name('login');
-    Route::post('login', [AuthLoginController::class, 'loginVerify'])->name('login.verify');
-    Route::get('register', [AuthLoginController::class, 'register'])->name('register');
-    Route::post('register', [AuthLoginController::class, 'registerverify']);
-    Route::post('signOut', [AuthLoginController::class, 'signOut'])->name('signOut');
+  Route::get('login', [AuthLoginController::class, 'login'])->name('login');
+  Route::post('login', [AuthLoginController::class, 'loginVerify'])->name('login.verify');
+  Route::get('register', [AuthLoginController::class, 'register'])->name('register');
+  Route::post('register', [AuthLoginController::class, 'registerverify']);
+  Route::post('signOut', [AuthLoginController::class, 'signOut'])->name('signOut');
 });
 
 //protegidas
 Route::middleware('auth')->group(function () {
-    Route::get('home', [HomeController::class, 'index'])->name('dashboard');
-    Route::get('directorio', [directorioController::class, 'index'])->name('directorio');
-});
+  Route::get('home', [HomeController::class, 'index'])->name('dashboard');
+  Route::post('codigoEmergencia', [HomeController::class, 'generarCodigoEmergencia'])->name('home.CodigoEmergencia');
 
+  // Planta Routes
+Route::get('busqueda', [PlantaController::class, 'mostrarFormulario'])->name('planta.busqueda');
+Route::post('buscar', [PlantaController::class, 'buscar'])->name('planta.buscar');
+
+//Reportes
+Route::get('reportes', [reporteController::class, 'reporte'])->name('reporte.nuevo');
+//pruebas 
+Route::get('/codigo-reporte/{id}', [reporteController::class, 'getCodigoReporteData']);
+//finpruebsa
+
+
+  // Directorio routes
+  Route::get('buscar', [directorioController::class, 'buscar'])->name('directorio.buscar');
+  Route::get('directorio/ingresar', [directorioController::class, 'ingresar'])->name('directorio.ingresar');
+
+  //Radios Routes
+  //Ruta pra la busqueda de las grabaciones
+  Route::get('/buscarPorFecha', [RadiosController::class, 'buscarPorFecha'])->name('radios.buscar');
+  // Ruta para mostrar la vista de actualización y creación de radios
+  Route::get('actualizar', [RadioIdController::class, 'cargaTabla'])->name('radios.cargaTabla');
+  // Ruta para crear un nuevo radio en la base de datos
+  Route::post('crear', [RadioIdController::class, 'nuevoRadio'])->name('radios.nuevoRadio');
+
+
+  //Usuarios Routes
+  Route::get('nuevo', [UsuariosController::class, 'registro'])->name('usuarios.nuevo');
+  Route::post('nuevo', [UsuariosController::class, 'registerverify']);
+
+
+
+  //BD Routes
+  //   Route::get('/backup', function () {
+  //     return view('BD.bd');
+  //   })->name('bd.backup');
+  // //Ruta para manejar la creación de la copia de seguridad
+  //   Route::post('/create-backup',[BdController::class, 'createBackup'])->name('createBackup');
+  Route::prefix('bd')->group(function () {
+    Route::get('/backup', function () {
+      return view('BD.bd');
+    })->name('bd.backup');
+
+    // Ruta para manejar la creación de la copia de seguridad
+    Route::post('/create-backup', [BdController::class, 'createBackup'])->name('createBackup');
+  });
+});
 
 
 

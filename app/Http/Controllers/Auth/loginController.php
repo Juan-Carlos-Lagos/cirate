@@ -26,6 +26,8 @@ class loginController extends Controller
     public function registerverify(Request $request)
     {
         $request->validate([
+            'nombres' => 'required|string|max:255',
+            'apellidos' => 'required|string|max:255',
             'email' => 'required|unique:users,email|email',
             'password' => 'required|min:4',
             'password_confirmation' => 'required|same:password'
@@ -34,6 +36,8 @@ class loginController extends Controller
             'email.unique' => 'El email ya ha sido usado'
         ]);
         User::create([
+            'nombres' => $request->nombres,
+            'apellidos' => $request->apellidos,
             'email'=>$request->email,
             'password'=> bcrypt($request->password)
         ]);

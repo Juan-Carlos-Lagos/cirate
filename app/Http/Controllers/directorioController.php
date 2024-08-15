@@ -6,10 +6,16 @@ use Illuminate\Http\Request;
 
 class directorioController extends Controller
 {
-    //
-    public function index()
+   
+    public function buscar()
     {
-            return view('Directorio.directorio');
-        
+        return view('Directorio.buscar');
     }
+
+    public function ingresar()
+    {
+        return view('Directorio.ingresar');
+    }
+
+    
 }

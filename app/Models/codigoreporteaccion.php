@@ -7,14 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class radios extends Model
+class codigoreporteaccion extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $fillable = [
-        'idradio',
-        'aliasradio'
-    ]; // Columnas que se pueden llenar masivamente
 
-    
+    protected $table = 'codigoreporteaccion';
+
+    protected $fillable = [
+        'codigo','fecha', 'diasemana', 'hora', 'fktelefonollamada', 'fknombrellamada'
+        
+    ];
 }

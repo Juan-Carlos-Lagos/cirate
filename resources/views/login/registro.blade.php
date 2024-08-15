@@ -26,9 +26,30 @@
             <h2 class="text-center">
                 Registro usuario
             </h2>
+
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input name='email' type="email" class="form-control id exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <label for="exampleInputNombres">Nombres</label>
+                <input name="nombres" type="text" class="form-control" id="exampleInputNombres" placeholder="Ingrese sus nombres">
+                @error('nombres')
+                <small class="text-danger mt-1">
+                    <strong>{{ $message }}</strong>
+                </small>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputApellidos">Apellidos</label>
+                <input name="apellidos" type="text" class="form-control" id="exampleInputApellidos" placeholder="Ingrese sus apellidos">
+                @error('apellidos')
+                <small class="text-danger mt-1">
+                    <strong>{{ $message }}</strong>
+                </small>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input name='email' type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ejemplo@email.com">
                 @error('email')
                 <small class="text-danger mt-1">
                     <strong>{{ $message }}</strong>
@@ -47,15 +68,15 @@
             </div>
 
             <div class="form-group">
-                <label for="exampleInputPassword1">Password confimation</label>
-                <input name="password_confirmation" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                @error('password')
+                <label for="exampleInputPasswordConfirmation">Password confirmation</label>
+                <input name="password_confirmation" type="password" class="form-control" id="exampleInputPasswordConfirmation" placeholder="Confirm Password">
+                @error('password_confirmation')
                 <small class="text-danger mt-1">
                     <strong>{{ $message }}</strong>
                 </small>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary btn-block"> Registrar</button>
+            <button type="submit" class="btn btn-primary btn-block">Registrar</button>
 
             <div class="mt-3 text-center">
                 <a href="{{ route('login') }}">Ingresar</a>
