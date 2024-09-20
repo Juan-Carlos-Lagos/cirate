@@ -9,11 +9,14 @@ use Laravel\Sanctum\HasApiTokens;
 
 class radios extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
+    use HasFactory;
+    protected $table = "radios";
+    protected $primaryKey = 'id_radio';
+    
     protected $fillable = [
-        'idradio',
-        'aliasradio'
+        'id_radio',
+        'serial',
+        'alias'
     ]; // Columnas que se pueden llenar masivamente
 
     

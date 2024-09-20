@@ -18,12 +18,12 @@
           <div class="grid gap-4">
             <div class="grid grid-cols-2 gap-4">
               <div class="space-y-2">
-                <label class="form-label">Nuevo ID de Radio</label>
-                <input type="text" class="form-control" id="idRadio" name="idRadio" placeholder="Ingrese un nuevo ID de radio">
+                <label class="form-label">Nuevo Serial de Radio</label>
+                <input type="text" class="form-control" id="serial" name="serial" placeholder="Ingrese nuevo serial de radio">
               </div>
               <div class="space-y-2">
-                <label class="form-label">Nuevo Nombre de Radio</label>
-                <input type="text" class="form-control" id="aliasRadio" name="aliasRadio" placeholder="Ingrese un nuevo nombre de radio">
+                <label class="form-label">Nuevo Alias de Radio</label>
+                <input type="text" class="form-control" id="alias" name="alias" placeholder="Ingrese un nuevo alias de radio">
               </div>
             </div>
             <button type="submit" class="btn btn-primary mt-3">
@@ -49,8 +49,8 @@
             <tbody>
               @foreach ($radios as $radio)
               <tr>
-                <td>{{ $radio->idradio }}</td>
-                <td>{{ $radio->aliasradio }}</td>
+                <td>{{ $radio->serial }}</td>
+                <td>{{ $radio->alias }}</td>
                 <td>
                   <!-- colocar botones para modificar o eliminar radios -->
                 </td>

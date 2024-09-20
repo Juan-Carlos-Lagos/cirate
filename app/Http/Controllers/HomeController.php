@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\telefonos;
+use App\Models\directorio;
 use App\Models\codigoreporteaccion;
 use Carbon\Carbon;
 
@@ -13,7 +13,7 @@ class HomeController extends Controller
     {
         /*return view('welcome');*/
 
-        $consulta = telefonos::query()->where('numero', '=', '2240752')->get()->first();
+        $consulta = directorio::query()->where('telefono', '=', '2240752')->get()->first();
         dd(($consulta));
 
         // return view('dashboard.home', compact('consulta'));
@@ -26,17 +26,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $consulta = telefonos::query()->where('numero', '=', '2240752')->get()->first();
+        $consulta = directorio::query()->where('telefono', '=', '2240752')->get()->first();
        // $codigos = codigoreporteaccion::all();
         //dd( ($consulta));
         // return view('login.login');
         //return view('dashboard.home');
+        //------------------------- nueva bd remplazar------------
         // Obtener la fecha actual
-        $hoy = Carbon::now()->toDateString();
+       // $hoy = Carbon::now()->toDateString();
 
         // Obtener los códigos de reporte que tienen la fecha de hoy
-        $codigos = codigoreporteaccion::whereDate('fecha', $hoy)->get();
-        return view('home.home', ['consulta' => $consulta, 'codigos' => $codigos]);
+       // $codigos = codigoreporteaccion::whereDate('fecha', $hoy)->get();
+       // return view('home.home', ['consulta' => $consulta, 'codigos' => $codigos]);
+       return view('home.home', ['consulta' => $consulta]);
     }
 
 

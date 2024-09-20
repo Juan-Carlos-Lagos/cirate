@@ -30,13 +30,13 @@ class radioIdController extends Controller
     {
         // Validar los datos del formulario
         $request->validate([
-            'idRadio' => 'required|string|max:255',
-            'aliasRadio' => 'required|string|max:255',
+            'serial' => 'required|string|max:255',
+            'alias' => 'required|string|max:255',
         ]);
 
         radios::create([
-            'idradio' => $request->idRadio,
-            'aliasradio' => $request->aliasRadio,
+            'serial' => $request->serial,
+            'alias' => $request->alias,
         ]);
 
         // Redireccionar a una ruta después de la creación exitosa

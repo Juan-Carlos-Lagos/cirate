@@ -19,21 +19,16 @@
                     <div class="col-md-6">
                         <div class="card px-2">
                             <h4 class="car-center-sudo">Linea #1</h4>
-                            <form action="{{ route('home.CodigoEmergencia') }}" method="POST">
+                            <form action="" method="POST">
                                 @csrf
                                 <div class="input-group input-group-sm mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-sm">Telefono &nbsp;&nbsp;</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="telefono" value="{{ $consulta->numero }}">
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="telefono" value="{{ $consulta->telefono }}">
                                 </div>
 
                                 <div class="input-group input-group-sm mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-sm">Nombre &nbsp;&nbsp;</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="nombre" value="{{ $consulta->cliente }}">
-                                </div>
-
-                                <div class="input-group input-group-sm mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm">Direccion&nbsp;</span>
-                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="{{ $consulta->direccion }}">
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="nombre" value="{{ $consulta->nombre }}">
                                 </div>
 
                                 <div class="input-group input-group-sm mb-3">
@@ -42,12 +37,15 @@
                                 </div>
 
                                 <div class="input-group input-group-sm mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Direccion&nbsp;</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="{{ $consulta->direccion }}">
+                                </div>
+
+                                <div class="input-group input-group-sm mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-sm">Reporte &nbsp;&nbsp;&nbsp;&nbsp;</span>
                                     <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="codigo_reporte">
                                         <option value="" disabled selected>Seleccionar reporte</option>
-                                        @foreach($codigos as $codigo)
-                                        <option value="{{ $codigo->id }}">{{ $codigo->codigo }}</option>
-                                        @endforeach
+
                                     </select>
                                 </div>
 

@@ -12,6 +12,7 @@ class UsuariosController extends Controller
 
     public function registerverify(Request $request)
     {
+        dd($request->all());
         $request->validate([
             'nombres' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
@@ -22,12 +23,15 @@ class UsuariosController extends Controller
             'email.required' => 'El email es requerido',
             'email.unique' => 'El email ya ha sido usado'
         ]);
-        User::create([
-            'nombres' => $request->nombres,
-            'apellidos' => $request->apellidos,
-            'email'=>$request->email,
-            'password'=> bcrypt($request->password)
-        ]);
+        
+            User::create([
+                'nombres' => $request->nombres,
+                'apellidos' => $request->apellidos,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                
+            ]);
+        
 
         return redirect()->route('usuarios.nuevo')->with('success', 'Usuario registrado correctamente');
     }
