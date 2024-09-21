@@ -19,7 +19,7 @@
                     <div class="col-md-6">
                         <div class="card px-2">
                             <h4 class="car-center-sudo">Linea #1</h4>
-                            <form action="" method="POST">
+                            <form action="{{ route('home.CodigoEmergencia') }}" method="POST">
                                 @csrf
                                 <div class="input-group input-group-sm mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-sm">Telefono &nbsp;&nbsp;</span>
@@ -45,7 +45,9 @@
                                     <span class="input-group-text" id="inputGroup-sizing-sm">Reporte &nbsp;&nbsp;&nbsp;&nbsp;</span>
                                     <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="codigo_reporte">
                                         <option value="" disabled selected>Seleccionar reporte</option>
-
+                                        @foreach($codigos as $codigo)
+                                        <option value="{{ $codigo->id_detalle }}">{{ $codigo->nombre }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 

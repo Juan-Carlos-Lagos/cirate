@@ -7,15 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class codigoreporteaccion extends Model
+class detalleTipo extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
 
-    protected $table = 'codigoreporteaccion';
+    protected $table = 'detalle_tipo';
+    
+    protected $primaryKey = 'id_detalle';
 
     protected $fillable = [
-        'codigo','fecha', 'diasemana', 'hora', 'fktelefonollamada', 'fknombrellamada'
+        'id_detalle','fk_id_tipo', 'nombre', 'descripcion', 'fecha_creacion'
         
     ];
+    public $timestamps = false;
 }

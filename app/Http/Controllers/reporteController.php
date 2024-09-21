@@ -3,24 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\codigoreporteaccion;
+use App\Models\detalleTipo;
 
 class reporteController extends Controller
 {
-    // public function reporte(){
-    //     return view('Reportes.reporte');
-    // }
+
     public function reporte()
     {
-
-        $codigos = codigoreporteaccion::all();
-        //dd( ($codigos));
+        $codigos = detalleTipo::where('fk_id_tipo', 1)->get();
         return view('Reportes.reporte', ['codigos' => $codigos]);
     }
 
+//se requiere modificar las consultas para que carguen los datos automaticos
     public function show($id)
     {
-        $codigoReporte = codigoreporteaccion::find($id);
+        $codigoReporte = detalleTipo::find($id);
 
         if (!$codigoReporte) {
             return response()->json(['error' => 'Reporte no encontrado'], 404);
@@ -28,10 +25,11 @@ class reporteController extends Controller
 
         return response()->json($codigoReporte);
     }
+
     public function getCodigoReporteData($id)
     {
-        $codigoReporte = codigoreporteaccion::find($id);
-       // dd($codigoReporte);
+        $codigoReporte = detalleTipo::find($id);
+        // dd($codigoReporte);
 
         if ($codigoReporte) {
             return response()->json([

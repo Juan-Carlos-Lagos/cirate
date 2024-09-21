@@ -15,11 +15,5 @@ class reporte_actuacion extends Model
         'reporte_numero', 'fecha_alta_reporte', 'hora_alta_reporte'
     ];
 
-    // public function datos_victimas_rescatados()
-    // {
-    //     return $this->morphMany(datos_victimas_rescatados::class, 'reporte_actuacion_idreporte_actuacion');
-    // }
-
-
 
 }

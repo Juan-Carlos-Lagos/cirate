@@ -38,7 +38,7 @@ Route::prefix('auth')->group(function () {
 //protegidas
 Route::middleware('auth')->group(function () {
   Route::get('home', [HomeController::class, 'index'])->name('dashboard');
-  //Route::post('codigoEmergencia', [HomeController::class, 'generarCodigoEmergencia'])->name('home.CodigoEmergencia');
+  Route::post('codigoEmergencia', [HomeController::class, 'generarCodigoEmergencia'])->name('home.CodigoEmergencia');
 
   // Planta Routes
 Route::get('busqueda', [PlantaController::class, 'mostrarFormulario'])->name('planta.busqueda');
@@ -46,7 +46,7 @@ Route::post('buscar', [PlantaController::class, 'buscar'])->name('planta.buscar'
 
 //Reportes
 Route::get('reportes', [reporteController::class, 'reporte'])->name('reporte.nuevo');
-//pruebas 
+//pruebas
 Route::get('/codigo-reporte/{id}', [reporteController::class, 'getCodigoReporteData']);
 //finpruebsa
 
