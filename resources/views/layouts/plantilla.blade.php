@@ -70,7 +70,7 @@
                                 <a href="{{ route('directorio.buscar') }}" class="nav-link">Buscar</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('directorio.ingresar') }}" class="nav-link">Ingresar</a>
+                                <a href="{{ route('ingresar') }}" class="nav-link">Ingresar</a>
                             </li>
                         </ul>
                     </li>

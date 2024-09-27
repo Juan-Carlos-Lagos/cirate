@@ -53,7 +53,11 @@ Route::get('/codigo-reporte/{id}', [reporteController::class, 'getCodigoReporteD
 
   // Directorio routes
   Route::get('buscar', [directorioController::class, 'buscar'])->name('directorio.buscar');
-  Route::get('directorio/ingresar', [directorioController::class, 'ingresar'])->name('directorio.ingresar');
+  
+// Estás dos rutas son para: la de ingresar nos está enviando la información y la otra ruta
+// store nos está mostrando la vista 
+  Route::post('/store', [directorioController::class, 'store'])->name('store');
+  Route::get('/ingresar', [directorioController::class, 'ingresar'])->name('ingresar');
 
   //Radios Routes
   //Ruta pra la busqueda de las grabaciones
