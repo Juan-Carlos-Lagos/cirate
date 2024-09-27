@@ -46,7 +46,7 @@
                                     <select class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="codigo_reporte">
                                         <option value="" disabled selected>Seleccionar reporte</option>
                                         @foreach($codigos as $codigo)
-                                        <option value="{{ $codigo->id_detalle }}">{{ $codigo->nombre }}</option>
+                                        <option value="{{ $codigo->id_reporte_r }}">{{ $codigo->codigo }}</option>
                                         @endforeach
                                     </select>
                                 </div>

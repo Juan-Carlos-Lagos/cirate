@@ -19,7 +19,7 @@
                     <select class="form-select" id="codigoReporte" name="codigoReporte">
                         <option value="" disabled selected>Seleccionar</option>
                         @foreach($codigos as $codigo)
-                        <option value="{{ $codigo->id_detalle }}">{{ $codigo->nombre }}</option>
+                        <option value="{{ $codigo->id_codigo_r }}">{{ $codigo->codigo }}</option>
                         @endforeach
                     </select>
                 </div>

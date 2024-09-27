@@ -12,7 +12,7 @@ class directorio extends Model
 
     protected $table = "directorio";
 
-    protected $fillable = ['id-directorio', 'nombre','telefono','ciudad','direccion','comentario'];
+    protected $fillable = ['id_directorio', 'nombre','telefono','ciudad','direccion','comentario'];
 
 
 }
