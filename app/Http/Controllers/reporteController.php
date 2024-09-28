@@ -29,18 +29,22 @@ class reporteController extends Controller
 
     public function getCodigoReporteData($id)
     {
-        $codigoReporte = codigo_reporte_accion::find($id);
-        // dd($codigoReporte);
+        $codigoReporte = codigo_reporte_accion::with('audios','directorio', 'usuario')->find($id);
 
         if ($codigoReporte) {
             return response()->json([
                 'fecha' => $codigoReporte->fecha_creacion,
                 'diasemana' => $codigoReporte->dia_semana,
                 // la hora es de la llamada no de la creacion del codigo reporte
-                'hora' => $codigoReporte->hora_creacion,
+                'hora' => $codigoReporte->audios ? $codigoReporte->audios->hora_recepcion : null,
 
-                'fktelefonollamada' => $codigoReporte->fktelefonollamada,
-                'fknombrellamada' => $codigoReporte->fknombrellamada,
+                // Traer el teléfono desde la relación 'directorio'
+                'telefono_directorio' => $codigoReporte->directorio ? $codigoReporte->directorio->telefono : null,
+                'nombre_directorio' => $codigoReporte->directorio ? $codigoReporte->directorio->nombre : null,
+
+                // el nombre del usuario que creo el codigo de reporte
+                'guardia' => $codigoReporte->usuario ? $codigoReporte->usuario->nombres : null,
+
             ]);
         } else {
             return response()->json(['error' => 'Código de reporte no encontrado.'], 404);

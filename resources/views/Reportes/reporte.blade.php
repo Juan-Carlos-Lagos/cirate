@@ -569,8 +569,8 @@
                     <textarea class="form-control" id="unidades-asistieron" placeholder="Unidades que asistieron en la emergencia." rows="3"></textarea>
                 </div>
                 <div class="mb-4">
-                    <label for="guardia" class="form-label">Guardia</label>
-                    <input class="form-control" id="guardia" type="text" placeholder="Nombre" />
+                    <label class="form-label" for="guardia">Guardia</label>
+                    <input class="form-control" id="guardia" type="text" placeholder="Nombre" disabled/>
                 </div>
 
             </div>
@@ -612,8 +612,9 @@
                             $('#fecha').val(data.fecha);
                             $('#diaSemana').val(data.diasemana);
                             $('#hora').val(data.hora);
-                            $('#alNo').val(data.fktelefonollamada);
-                            $('#persona').val(data.fknombrellamada);
+                            $('#alNo').val(data.telefono_directorio);
+                            $('#persona').val(data.nombre_directorio);
+                            $('#guardia').val(data.guardia);
                         }
                     },
                     error: function(xhr, status, error) {
@@ -627,6 +628,7 @@
                 $('#hora').val('');
                 $('#alNo').val('');
                 $('#persona').val('');
+                $('#guardia').val('');
             }
         });
     });
