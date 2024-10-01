@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\radios;
+use App\Models\radio;
 
 class radioIdController extends Controller
 {
@@ -15,7 +15,7 @@ class radioIdController extends Controller
      */
     public function cargaTabla()
     {
-        $radios = radios::all(); // Obtener todos los radios desde la base de datos
+        $radios = radio::all(); // Obtener todos los radios desde la base de datos
 
         return view('radios.actualizar', compact('radios'));
     }
@@ -34,7 +34,7 @@ class radioIdController extends Controller
             'alias' => 'required|string|max:255',
         ]);
 
-        radios::create([
+        radio::create([
             'serial' => $request->serial,
             'alias' => $request->alias,
         ]);

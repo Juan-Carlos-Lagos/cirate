@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class radios extends Model
+class radio extends Model
 {
     use HasFactory;
     protected $table = "radios";
@@ -17,7 +17,7 @@ class radios extends Model
         'id_radio',
         'serial',
         'alias'
-    ]; // Columnas que se pueden llenar masivamente
+    ];
 
     
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\auth\loginController as AuthLoginController;
 use App\Http\Controllers\BdController;
 use App\Http\Controllers\directorioController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\llamadasRadiosController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlantaController;
 use App\Http\Controllers\radioIdController;
@@ -61,7 +62,7 @@ Route::get('/codigo-reporte/{id}', [reporteController::class, 'getCodigoReporteD
 
   //Radios Routes
   //Ruta pra la busqueda de las grabaciones
-  Route::get('/buscarPorFecha', [RadiosController::class, 'buscarPorFecha'])->name('radios.buscar');
+  Route::get('/buscarPorFecha', [llamadasRadiosController::class, 'buscarPorFecha'])->name('radios.buscar');
   // Ruta para mostrar la vista de actualización y creación de radios
   Route::get('actualizar', [RadioIdController::class, 'cargaTabla'])->name('radios.cargaTabla');
   // Ruta para crear un nuevo radio en la base de datos

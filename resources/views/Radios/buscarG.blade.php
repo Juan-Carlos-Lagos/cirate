@@ -33,6 +33,7 @@
         <table class="table caption-bottom text-sm">
           <thead class="border-bottom">
             <tr class="table-secondary">
+              <th scope="col">Alias</th>
               <th scope="col">Fecha de inicio</th>
               <th scope="col">Hora de inicio</th>
               <th scope="col">Fecha de finalización</th>
@@ -44,14 +45,15 @@
             @if(isset($conversaciones) && count($conversaciones) > 0)
             @foreach($conversaciones as $conversacion)
             <tr class="border-bottom">
-              <td class="p-4 align-middle">{{ $conversacion->fechainicio }}</td>
-              <td class="p-4 align-middle">{{ $conversacion->horainicio }}</td>
-              <td class="p-4 align-middle">{{ $conversacion->fechafin }}</td>
-              <td class="p-4 align-middle">{{ $conversacion->horafin }}</td>
+              <td class="p-4 align-middle">{{ $conversacion->alias_radio }}</td>
+              <td class="p-4 align-middle">{{ $conversacion->fecha_recepcion }}</td>
+              <td class="p-4 align-middle">{{ $conversacion->hora_recepcion }}</td>
+              <td class="p-4 align-middle">{{ $conversacion->fecha_finalizacion }}</td>
+              <td class="p-4 align-middle">{{ $conversacion->hora_finalizacion }}</td>
               <td class="p-4 align-middle">
                 <!-- Botón de reproducir -->
               <td class="p-4 align-middle">
-                <button class="btn btn-primary play-audio" data-audio="{{ asset('audios/' . $conversacion->fechainicio . '.mp3') }}">
+                <button class="btn btn-primary play-audio" data-audio="{{ asset('audios/' . $conversacion->fecha_recepcion . '.mp3') }}">
                   <i class="bi bi-play-fill"></i>
                 </button>
               </td>

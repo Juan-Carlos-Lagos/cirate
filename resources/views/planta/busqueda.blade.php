@@ -108,13 +108,13 @@
             @if(isset($resultados))
             @foreach($resultados as $resultado)
             <tr>
-                <td>{{ $resultado->date }}</td>
-                <td>{{ $resultado->time }}</td>
+                <td>{{ $resultado->audio->fecha_recepcion }}</td>
+                <td>{{ $resultado->audio->hora_recepcion }}</td>
                 <td>{{ $resultado->ext }}</td>
                 <td>{{ $resultado->co }}</td>
                 <td>{{ $resultado->dial }}</td>
                 <td>{{ $resultado->ring }}</td>
-                <td>{{ $resultado->duration }}</td>
+                <td>{{ $resultado->audio->duracion }}</td>
                 <td>{{ $resultado->acc }}</td>
                 <td>{{ $resultado->code }}</td>
                 <td>{{ $resultado->cd }}</td>

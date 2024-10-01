@@ -7,18 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class audios extends Model
+class registro_audios_radio extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
-
-    protected $table = 'audios';
-    
-    protected $primaryKey = 'id_audio';
+    use HasFactory;
+    protected $table = "registro_audios_radios";
+    protected $primaryKey = 'id_registro_audio';
 
     protected $fillable = [
-        'nombre', 'fecha_recepcion', 'hora_recepcion', 'fecha_finalizacion','ruta','duracion'
-        
+        'fk_id_radio',
+        'fk_id_audio'
     ];
     public $timestamps = false;
 }
