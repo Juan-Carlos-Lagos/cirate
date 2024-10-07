@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 class UsuariosController extends Controller
 {
     public function registro(){
-        return view('usuarios.nuevo');
+        $user=User::get();
+        return view('usuarios.nuevo', compact('user'));
     }
 
     public function registerverify(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $request->validate([
             'nombres' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
@@ -32,10 +33,26 @@ class UsuariosController extends Controller
                 
             ]);
         
-
         return redirect()->route('usuarios.nuevo')->with('success', 'Usuario registrado correctamente');
     }
 
-    
-   
+    public function nuevo(Request $request){
+        
+        $user = new User;
+        $user->nombres = $request->input('nombre');
+        $user->apellidos = $request->input('apellido');
+        $user->email = $request->input('email');
+        $user->rol = $request->input('rol');
+        $user->password = bcrypt($request->input('rol'));
+        $user->save();
+        
+        return redirect()->route('show');
+    }
+
+    public function show(){
+        $user=User::get();
+        // $user = User::orderBy('id')->paginate(5);
+        return view('usuarios.nuevo', compact('user'));
+    }
+
 }
