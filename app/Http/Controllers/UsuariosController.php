@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class UsuariosController extends Controller
 {
     public function registro(){
-        $user=User::get();
+        // $user=User::get();
+        $user = User::orderBy('id_usuario')->paginate(5);
         return view('usuarios.nuevo', compact('user'));
     }
 
@@ -43,16 +44,20 @@ class UsuariosController extends Controller
         $user->apellidos = $request->input('apellido');
         $user->email = $request->input('email');
         $user->rol = $request->input('rol');
-        $user->password = bcrypt($request->input('rol'));
+        $user->password = bcrypt($request->input('contraseña'));
         $user->save();
         
         return redirect()->route('show');
     }
 
     public function show(){
-        $user=User::get();
-        // $user = User::orderBy('id')->paginate(5);
+        $user = User::orderBy('id_usuario')->paginate(5);
         return view('usuarios.nuevo', compact('user'));
+    }
+
+    public function destroy(User $user){
+        $user->delete();
+        return redirect()->route('show');
     }
 
 }

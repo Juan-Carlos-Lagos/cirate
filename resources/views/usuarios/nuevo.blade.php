@@ -64,7 +64,11 @@
               <td>
                 <div class="btn-group" role="group">
                   <button type="button" class="btn btn-secondary">Editar</button>
-                  <button type="button" class="btn btn-danger">Eliminar</button>
+                  <form action="{{route('nuevo.destroy', $us->id_usuario)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                  </form>
                 </div>
               </td>
             </tr>
@@ -72,6 +76,7 @@
             <!-- Más filas de usuarios pueden ir aquí -->
           </tbody>
         </table>
+        {{ $user->links() }}
       </div>
     </div>
   </div>

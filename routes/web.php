@@ -77,6 +77,9 @@ Route::get('/codigo-reporte/{id}', [reporteController::class, 'getCodigoReporteD
   Route::post('/nuevo',[UsuariosController::class, 'nuevo'])->name('usuarios.agregar');
   Route::get('/show', [UsuariosController::class, 'show'])->name('show');
 
+// Ruta destroy para eliminar usuarios de la tabla usuarios
+  Route::delete('/destroy/{user}', [UsuariosController::class, 'destroy'])->name('nuevo.destroy');
+
 
 
   //BD Routes
