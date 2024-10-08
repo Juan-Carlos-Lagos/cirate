@@ -1,0 +1,36 @@
+.modal-box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s; 
+}
+
+.modal--show{
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .6s;
+}
+
+.modal-container{
+    width: 90%;
+    max-width: 700px;
+    background-color: #fff;
+    max-height: 90%;
+    margin: auto;
+    border-radius: 6px;
+    padding: 1em 1em;
+}
+
+#button-modal{
+    margin-left: 5px;
+}
+
+.custom-width{
+    width: 200px;
+}

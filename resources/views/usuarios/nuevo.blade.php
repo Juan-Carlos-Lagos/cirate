@@ -63,7 +63,12 @@
               <td>{{$us->rol}}</td>
               <td>
                 <div class="btn-group" role="group">
-                  <button type="button" class="btn btn-secondary">Editar</button>
+                  <button type="button" class="btn btn-secondary open-modal"
+                  data-id={{$us->id_usuario}}
+                  data-name={{$us->nombres}}
+                  data-last-name={{$us->apellidos}}
+                  data-email={{$us->email}}
+                  data-rol={{$us->rol}}>Editar</button>
                   <form action="{{route('nuevo.destroy', $us->id_usuario)}}" method="POST">
                     @csrf
                     @method('DELETE')
@@ -81,5 +86,9 @@
     </div>
   </div>
 </div>
+
+@include('layouts._partials.modal')
+
+<script src="{{ asset('js/main.js') }}"></script>
 
 @endsection

@@ -80,6 +80,10 @@ Route::get('/codigo-reporte/{id}', [reporteController::class, 'getCodigoReporteD
 // Ruta destroy para eliminar usuarios de la tabla usuarios
   Route::delete('/destroy/{user}', [UsuariosController::class, 'destroy'])->name('nuevo.destroy');
 
+// Cuando abrimos el Modal en el botón de editar de Usuarios, esta ruta nos va ayudar a
+// editar el usuario si se requiere
+  Route::put('usuario/update/{user}', [UsuariosController::class, 'update'])->name('nuevo.update');
+
 
 
   //BD Routes

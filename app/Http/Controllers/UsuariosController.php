@@ -60,4 +60,21 @@ class UsuariosController extends Controller
         return redirect()->route('show');
     }
 
+    public function update(Request $request, User $user){
+        // dd($user);
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id_usuario,
+            'rol-edit2' => 'required|string',
+        ]);
+
+        $user->nombres = $request->input('nombre');
+        $user->apellidos = $request->input('apellido');
+        $user->email = $request->input('email');
+        $user->rol = $request->input('rol-edit2');
+        $user->save();
+
+        return redirect()->route('show');
+    }
 }
