@@ -47,6 +47,8 @@ Route::post('buscar', [PlantaController::class, 'buscar'])->name('planta.buscar'
 
 //Reportes
 Route::get('reportes', [reporteController::class, 'reporte'])->name('reporte.nuevo');
+Route::post('reporte/guardar', [reporteController::class, 'guardar'])->name('reporte.guardar');
+
 //pruebas
 Route::get('/codigo-reporte/{id}', [reporteController::class, 'getCodigoReporteData']);
 //finpruebsa
