@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 class UsuariosController extends Controller
 {
     public function registro(){
-        return view('usuarios.nuevo');
+        // $user=User::get();
+        $user = User::orderBy('id_usuario')->paginate(5);
+        return view('usuarios.nuevo', compact('user'));
     }
 
     public function registerverify(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $request->validate([
             'nombres' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
@@ -32,10 +34,47 @@ class UsuariosController extends Controller
                 
             ]);
         
-
         return redirect()->route('usuarios.nuevo')->with('success', 'Usuario registrado correctamente');
     }
 
-    
-   
+    public function nuevo(Request $request){
+        
+        $user = new User;
+        $user->nombres = $request->input('nombre');
+        $user->apellidos = $request->input('apellido');
+        $user->email = $request->input('email');
+        $user->rol = $request->input('rol');
+        $user->password = bcrypt($request->input('contraseña'));
+        $user->save();
+        
+        return redirect()->route('show');
+    }
+
+    public function show(){
+        $user = User::orderBy('id_usuario')->paginate(5);
+        return view('usuarios.nuevo', compact('user'));
+    }
+
+    public function destroy(User $user){
+        $user->delete();
+        return redirect()->route('show');
+    }
+
+    public function update(Request $request, User $user){
+        // dd($user);
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id_usuario,
+            'rol-edit2' => 'required|string',
+        ]);
+
+        $user->nombres = $request->input('nombre');
+        $user->apellidos = $request->input('apellido');
+        $user->email = $request->input('email');
+        $user->rol = $request->input('rol-edit2');
+        $user->save();
+
+        return redirect()->route('show');
+    }
 }

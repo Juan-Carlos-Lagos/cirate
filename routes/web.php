@@ -70,10 +70,21 @@ Route::get('/codigo-reporte/{id}', [reporteController::class, 'getCodigoReporteD
   // Ruta para crear un nuevo radio en la base de datos
   Route::post('crear', [RadioIdController::class, 'nuevoRadio'])->name('radios.nuevoRadio');
 
-
   //Usuarios Routes
   Route::get('nuevo', [UsuariosController::class, 'registro'])->name('usuarios.nuevo');
   Route::post('nuevo', [UsuariosController::class, 'registerverify']);
+
+  //Usuarios Routes: nuevo es para recepcionar la información y la ruta show es para
+// mostrar la vista
+  Route::post('/nuevo',[UsuariosController::class, 'nuevo'])->name('usuarios.agregar');
+  Route::get('/show', [UsuariosController::class, 'show'])->name('show');
+
+// Ruta destroy para eliminar usuarios de la tabla usuarios
+  Route::delete('/destroy/{user}', [UsuariosController::class, 'destroy'])->name('nuevo.destroy');
+
+// Cuando abrimos el Modal en el botón de editar de Usuarios, esta ruta nos va ayudar a
+// editar el usuario si se requiere
+  Route::put('usuario/update/{user}', [UsuariosController::class, 'update'])->name('nuevo.update');
 
 
 
