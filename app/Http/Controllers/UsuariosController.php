@@ -6,37 +6,11 @@ use Illuminate\Http\Request;
 
 class UsuariosController extends Controller
 {
-    public function registro(){
-        // $user=User::get();
+    public function usuarios(){
         $user = User::orderBy('id_usuario')->paginate(5);
         return view('usuarios.nuevo', compact('user'));
     }
-
-    public function registerverify(Request $request)
-    {
-        // dd($request->all());
-        $request->validate([
-            'nombres' => 'required|string|max:255',
-            'apellidos' => 'required|string|max:255',
-            'email' => 'required|unique:users,email|email',
-            'password' => 'required|min:4',
-            'password_confirmation' => 'required|same:password'
-        ],[
-            'email.required' => 'El email es requerido',
-            'email.unique' => 'El email ya ha sido usado'
-        ]);
-        
-            User::create([
-                'nombres' => $request->nombres,
-                'apellidos' => $request->apellidos,
-                'email' => $request->email,
-                'password' => bcrypt($request->password),
-                
-            ]);
-        
-        return redirect()->route('usuarios.nuevo')->with('success', 'Usuario registrado correctamente');
-    }
-
+    
     public function nuevo(Request $request){
         
         $user = new User;
@@ -47,25 +21,21 @@ class UsuariosController extends Controller
         $user->password = bcrypt($request->input('contraseña'));
         $user->save();
         
-        return redirect()->route('show');
-    }
-
-    public function show(){
-        $user = User::orderBy('id_usuario')->paginate(5);
-        return view('usuarios.nuevo', compact('user'));
+        return redirect()->route('usuarios');
     }
 
     public function destroy(User $user){
         $user->delete();
-        return redirect()->route('show');
+        return redirect()->route('usuarios');
     }
 
     public function update(Request $request, User $user){
         // dd($user);
+        // dd($request->all());
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id_usuario,
+            'email' => 'required|email|unique:users,email,' . $user->id_usuario . ',id_usuario',
             'rol-edit2' => 'required|string',
         ]);
 
@@ -75,6 +45,6 @@ class UsuariosController extends Controller
         $user->rol = $request->input('rol-edit2');
         $user->save();
 
-        return redirect()->route('show');
+        return redirect()->route('usuarios');
     }
 }

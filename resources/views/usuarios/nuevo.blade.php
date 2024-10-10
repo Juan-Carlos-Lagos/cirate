@@ -64,11 +64,11 @@
               <td>
                 <div class="btn-group" role="group">
                   <button type="button" class="btn btn-secondary open-modal"
-                  data-id={{$us->id_usuario}}
-                  data-name={{$us->nombres}}
-                  data-last-name={{$us->apellidos}}
-                  data-email={{$us->email}}
-                  data-rol={{$us->rol}}>Editar</button>
+                  data-id="{{$us->id_usuario}}"
+                  data-name="{{$us->nombres}}"
+                  data-last-name="{{$us->apellidos}}"
+                  data-email="{{$us->email}}"
+                  data-rol="{{$us->rol}}">Editar</button>
                   <form action="{{route('nuevo.destroy', $us->id_usuario)}}" method="POST">
                     @csrf
                     @method('DELETE')
