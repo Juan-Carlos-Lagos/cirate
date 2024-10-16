@@ -50,7 +50,10 @@ Route::get('reportes', [reporteController::class, 'reporte'])->name('reporte.nue
 Route::post('reporte/guardar', [reporteController::class, 'guardar'])->name('reporte.guardar');
 
 //pruebas
+Route::post('/guardar-uso-lugar', [reporteController::class, 'guardarUsoLugar'])->name('guardarUsoLugar');
 Route::get('/codigo-reporte/{id}', [reporteController::class, 'getCodigoReporteData']);
+Route::get('cargar-detalles', [reporteController::class, 'cargarDetallesUsoLugar']);
+
 //finpruebsa
 
 

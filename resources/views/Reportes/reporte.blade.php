@@ -86,15 +86,15 @@
                 <div class="row mb-3">
                     <div class="col-md-4">
                         <label class="form-label" for="exit-time">Hora de salida</label>
-                        <input type="time" class="form-control" id="exit-time">
+                        <input type="time" class="form-control" id="exit-time" name='hora_salida'>
                     </div>
                     <div class="col-md-4">
                         <label class="form-label" for="arrival-time">Hora de llegada</label>
-                        <input type="time" class="form-control" id="arrival-time">
+                        <input type="time" class="form-control" id="arrival-time" name='hora_llegada'>
                     </div>
                     <div class="col-md-4">
                         <label class="form-label" for="entry-time">Hora de ingreso</label>
-                        <input type="time" class="form-control" id="entry-time">
+                        <input type="time" class="form-control" id="entry-time" name='hora_ingreso'>
                     </div>
                     <div class="col-md-12">
                         <label class="form-label" for="duracion">Duración de la actuación</label>
@@ -107,7 +107,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    
+
                     <div class="col-md-6">
                         <label class="form-label" for="departamento">Departamento</label>
                         <input type="text" class="form-control" id="departamento" name="departamento" placeholder="Departamento">
@@ -128,10 +128,24 @@
                         <label class="form-label" for="barrio">Barrio</label>
                         <input type="text" class="form-control" id="barrio" name="barrio" placeholder="Barrio">
                     </div>
+
                     <div class="col-md-6">
                         <label class="form-label" for="usoLugar">Uso del lugar</label>
-                        <input type="text" class="form-control" id="usoLugar" name="usoLugar" placeholder="Variante, Via pública, Vivienda ...">
+                        <select class="form-select" id="usoLugar" name="usoLugar">
+                            <option value="" disabled selected>Seleccionar</option>
+                            @foreach($detalles as $detalle)
+                            <option value="{{ $detalle->id_detalle }}">{{ $detalle->nombre }}</option>
+                            @endforeach
+                            <option value="otroUsoLugar">Otro</option>
+                        </select>
+                        <div id="campoOtroUsoLugar" style="display:none;">
+                            <input type="text" class="form-control mt-2" id="nuevoUsoLugar" name="nuevoUsoLugar" placeholder="Ingrese nuevo uso lugar" style="display: none;" disabled>
+
+                            <!-- boton de prueba para los datos de uso lugar -->
+                            <button type="submit" class="btn btn-primary mt-2">Agregar</button>
+                        </div>
                     </div>
+
                     <div class="col-md-6">
                         <label class="form-label" for="telefono">Teléfono</label>
                         <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Número teléfono">
@@ -139,29 +153,31 @@
                     <div class="col-md-6">
                         <label class="form-label" for="tipoPropiedad">Tipo de Propiedad</label>
                         <select class="form-select" id="tipoPropiedad" name="tipoPropiedad">
-                            <option value="">Seleccionar</option>
-                            <option value="opcion1">Ninguno</option>
-                            <option value="opcion2">Propietario</option>
-                            <option value="opcion3">Inquilino</option>
-                            <option value="opcion4">Administrador</option>
-                            <option value="opcion5">Otro</option>
+                            <option value="" disabled selected>Seleccionar</option>
+                            @foreach($propiedades as $propiedad)
+                            <option value="{{ $propiedad->id_detalle }}">{{ $propiedad->nombre }}</option>
+                            @endforeach
+                            <option value="otroTipoPropiedad">Otro</option>
                         </select>
+
                         <input type="text" class="form-control mt-2" id="otroTipoPropiedad" name="otroTipoPropiedad" placeholder="Especificar" style="display: none;" disabled>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="companiaAseguradora">Compañía Aseguradora</label>
                         <select class="form-select" id="companiaAseguradora" name="companiaAseguradora">
-                            <option value="">Seleccionar</option>
-                            <option value="opcion2">Sí</option>
-                            <option value="opcion3">No</option>
+                            <option value="" disabled selected>Seleccionar</option>
+                            @foreach($aseguradoras as $aseguradora)
+                            <option value="{{ $aseguradora->id_detalle }}">{{ $aseguradora->nombre }}</option>
+                            @endforeach
+                            <option value="otroTipoAseguradora">Otro</option>
                         </select>
                         <input type="text" class="form-control mt-2" id="nombreCompaniaAseguradora" name="nombreCompaniaAseguradora" placeholder="Especificar" style="display: none;" disabled>
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="comments">Detalles de Acción</label>
-                    <textarea class="form-control" id="comments" placeholder="La actuación consistió en..."></textarea>
+                    <label class="form-label" for="dettaleAccion">Detalles de Acción</label>
+                    <textarea class="form-control" id="dettaleAccion" name="dettaleAccion" placeholder="La actuación consistió en..."></textarea>
                 </div>
             </div>
         </div>
@@ -179,35 +195,41 @@
 
                     <div class="row mb-4">
                         <div class="col-md-6 mb-3">
-                            <label for="nombre-personal" class="form-label">Personal</label>
-                            <input class="form-control " id="personal" placeholder="Cantidad" type="number" min="0" />
+                            <label for="personal" class="form-label">Personal</label>
+                            <input class="form-control " id="personal" name="personal" placeholder="Cantidad" type="number" min="0" />
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="maquinas-personal" class="form-label">Máquinas</label>
-                            <input class="form-control" id="maquinas-personal" placeholder="Máquinas" />
+                            <label for="maquinas_utilizadas" class="form-label">Máquinas</label>
+                            <input class="form-control" id="maquinas-utilizadas" name="maquinas_utilizadas" placeholder="Máquinas" />
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="agua-personal" class="form-label">Agua</label>
-                            <input class="form-control" id="agua-personal" placeholder="Galones" type="number" min="0" />
+                            <label for="agua_utilizada" class="form-label">Agua</label>
+                            <input class="form-control" id="agua_utilizada" name="agua_utilizada" placeholder="Galones" type="number" min="0" />
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label class="form-label">Químicos</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="quimicos-personal-espuma" />
-                                <label class="form-check-label" for="quimicos-personal-espuma">Espuma</label>
+                            <label for="quimicos" class="form-label">Químicos</label>
+                            <select class="form-select" id="quimicos" name="quimicos">
+                                <option value="" disabled selected>Seleccionar</option>
+                                @foreach($quimicos as $quimico)
+                                <option value="{{ $quimico->id_detalle }}">{{ $quimico->nombre }}</option>
+                                @endforeach
+                            </select>
+                            <!-- <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="quimicos_espuma" />
+                                <label class="form-check-label" for="quimicos_espuma">Espuma</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="quimicos-personal-extintores" />
-                                <label class="form-check-label" for="quimicos-personal-extintores">Extintores</label>
-                            </div>
+                                <input class="form-check-input" type="checkbox" id="quimicos_extintores" />
+                                <label class="form-check-label" for="quimicos_extintores">Extintores</label>
+                            </div>-->
                         </div>
 
                         <div class="mb-3">
-                            <label for="comentarios-personal" class="form-label">Materiales</label>
-                            <textarea class="form-control" id="comentarios-personal" placeholder="Especifique la cantidad." rows="3"></textarea>
+                            <label for="materiales_cantidad" class="form-label">Materiales</label>
+                            <textarea class="form-control" id="materiales_cantidad" name="materiales_cantidad" placeholder="Especifique la cantidad de los materiales utilizados." rows="3"></textarea>
                         </div>
 
                         <!-- Otros -->
@@ -217,31 +239,31 @@
                         <div class="mb-3">
                             <div class="d-flex align-items-center mb-2 flex-wrap">
                                 <div class="d-flex align-items-center me-4">
-                                    <input class="form-check-input me-2" type="checkbox" id="otros-policia" />
-                                    <label class="form-check-label me-2" for="otros-policia">Policía</label>
-                                    <input class="form-control w-auto" id="otros-policia-cantidad" placeholder="Cantidad" type="number" min="0" />
+                                    <input class="form-check-input me-2" type="checkbox" id="otros_policia" name="organismos[policia]"/>
+                                    <label class="form-check-label me-2" for="policia">Policía</label>
+                                    <input class="form-control w-auto" id="policia_cantidad" name="cantidad[policia]" placeholder="Cantidad" type="number" min="0" disabled />
                                 </div>
                                 <div class="d-flex align-items-center me-4">
-                                    <input class="form-check-input me-2" type="checkbox" id="otros-ejercito" />
-                                    <label class="form-check-label me-2" for="otros-ejercito">Ejército</label>
-                                    <input class="form-control w-auto" id="otros-ejercito-cantidad" placeholder="Cantidad" type="number" min="0" />
+                                    <input class="form-check-input me-2" type="checkbox" id="otros_ejercito" />
+                                    <label class="form-check-label me-2" for="ejercito">Ejército</label>
+                                    <input class="form-control w-auto" id="ejercito_cantidad" name="ejercito_cantidad" placeholder="Cantidad" type="number" min="0" disabled />
                                 </div>
                                 <div class="d-flex align-items-center me-4">
                                     <input class="form-check-input me-2" type="checkbox" id="otros-defensa" />
-                                    <label class="form-check-label me-2" for="otros-defensa">Defensa Civil</label>
-                                    <input class="form-control w-auto" id="otros-defensa-cantidad" placeholder="Cantidad" type="number" min="0" />
+                                    <label class="form-check-label me-2" for="defensa">Defensa Civil</label>
+                                    <input class="form-control w-auto" id="defensa_cantidad" name="defensa_cantidad" placeholder="Cantidad" type="number" min="0" disabled />
                                 </div>
                             </div>
                             <div class="d-flex align-items-center">
                                 <div class="d-flex align-items-center me-4">
                                     <input class="form-check-input me-2" type="checkbox" id="otros-cruz" />
-                                    <label class="form-check-label me-2" for="otros-cruz">Cruz Roja</label>
-                                    <input class="form-control w-auto" id="otros-cruz-cantidad" placeholder="Cantidad" type="number" min="0" />
+                                    <label class="form-check-label me-2" for="cruz">Cruz Roja</label>
+                                    <input class="form-control w-auto" id="cruz_cantidad" name="cruz_cantidad" placeholder="Cantidad" type="number" min="0" disabled />
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <input class="form-check-input me-2" type="checkbox" id="otros-otros" />
-                                    <label class="form-check-label me-2" for="otros-otros">Otros</label>
-                                    <input class="form-control w-auto" id="otros-otros-cantidad" placeholder="Cantidad" type="number" min="0" />
+                                    <label class="form-check-label me-2" for="otros">Otros</label>
+                                    <input class="form-control w-auto" id="otros_cantidad" name="otros_cantidad" placeholder="Cantidad" type="number" min="0" disabled />
                                 </div>
                             </div>
                         </div>
@@ -570,14 +592,34 @@
 @endsection
 
 @push('scripts')
+
+<!-- muestra el input del check selecionado -->
+<script>
+    document.querySelectorAll('.form-check-input').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const inputCantidad = this.parentElement.querySelector('.form-control');
+            inputCantidad.disabled = !this.checked; // Habilita o deshabilita el input de cantidad
+            if (!this.checked) {
+                inputCantidad.value = ''; // Limpia el valor si se desmarca
+            }
+        });
+    });
+</script>
+
+
 <!-- aqui hay un scrip para tipo propietario y aseguradora -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Obtener los elementos del DOM
         const tipoPropiedad = document.getElementById('tipoPropiedad');
         const otroTipoPropiedad = document.getElementById('otroTipoPropiedad');
         const companiaAseguradora = document.getElementById('companiaAseguradora');
         const nombreCompaniaAseguradora = document.getElementById('nombreCompaniaAseguradora');
+        const usoLugar = document.getElementById('usoLugar'); // Select para tipo de detalle
+        const campoOtroUsoLugar = document.getElementById('campoOtroUsoLugar'); // Campo para "Otro" uso lugar
+        const nuevoUsoLugar = document.getElementById('nuevoUsoLugar'); // Input para "Otro" uso lugar
 
+        // Función para alternar la visibilidad de "Otro tipo de propiedad"
         function toggleOtroTipoPropiedad() {
             if (tipoPropiedad.value !== '' && tipoPropiedad.value !== 'opcion1') {
                 otroTipoPropiedad.style.display = 'block';
@@ -588,6 +630,7 @@
             }
         }
 
+        // Función para alternar la visibilidad del nombre de la compañía aseguradora
         function toggleNombreCompaniaAseguradora() {
             if (companiaAseguradora.value === 'opcion2') {
                 nombreCompaniaAseguradora.style.display = 'block';
@@ -598,12 +641,30 @@
             }
         }
 
+        // Función para mostrar u ocultar el campo de "Otro" en el select de detalleTipo
+        function toggleCampoOtroUsoLugar() {
+            if (usoLugar.value === 'otro') {
+                campoOtroUsoLugar.style.display = 'block'; // Mostrar el div
+                nuevoUsoLugar.style.display = 'block'; // Mostrar el input
+                nuevoUsoLugar.disabled = false; // Habilitar el input
+            } else {
+                campoOtroUsoLugar.style.display = 'none'; // Ocultar el div
+                nuevoUsoLugar.style.display = 'none'; // Ocultar el input
+                nuevoUsoLugar.disabled = true; // Deshabilitar el input
+                nuevoUsoLugar.value = ''; // Limpiar el input
+            }
+        }
+
+        // Event listeners para detectar cambios en los selects
         tipoPropiedad.addEventListener('change', toggleOtroTipoPropiedad);
         companiaAseguradora.addEventListener('change', toggleNombreCompaniaAseguradora);
+        usoLugar.addEventListener('change', toggleCampoOtroUsoLugar);
+        // Listener para "detalleTipo"
 
-        // Initial check
+        // Comprobación inicial para que los campos tengan el estado correcto al cargar la página
         toggleOtroTipoPropiedad();
         toggleNombreCompaniaAseguradora();
+        toggleCampoOtroUsoLugar(); // Comprobar el estado inicial para el campo de "Otro"
     });
 </script>
 <!-- fin scrip para tipo propiedad -->

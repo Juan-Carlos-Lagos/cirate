@@ -14,7 +14,6 @@ class UsuariosController extends Controller
 
     public function registerverify(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'nombres' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
