@@ -41,7 +41,7 @@
           <table class="table caption-bottom text-sm">
             <thead>
               <tr>
-                <th>ID de Radio</th>
+                <th>Serial de Radio</th>
                 <th>Alias de Radio</th>
                 <th>Acciones</th>
               </tr>
@@ -52,15 +52,31 @@
                 <td>{{ $radio->serial }}</td>
                 <td>{{ $radio->alias }}</td>
                 <td>
-                  <!-- colocar botones para modificar o eliminar radios -->
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-secondary radio-modal"
+                    data-idradio="{{$radio->id_radio}}"
+                    data-serial="{{$radio->serial}}"
+                    data-alias="{{$radio->alias}}">Editar</button>
+                    <form action="{{route('radios.destroy', $radio->id_radio)}}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                  </div>
                 </td>
               </tr>
               @endforeach
             </tbody>
           </table>
+          {{$radios->links()}}
         </div>
       </div>
     </div>
   </div>
 </div>
+
+@include('layouts._partials.modalRadiosActualizar')
+
+<script src="{{ asset('js/main.js') }}"></script>
+
 @endsection

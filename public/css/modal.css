@@ -5,6 +5,7 @@
     right: 0;
     bottom: 0;
     background-color: #111111bd;
+    z-index: 1000;
     display: flex;
     opacity: 0;
     pointer-events: none;
@@ -25,6 +26,7 @@
     margin: auto;
     border-radius: 6px;
     padding: 1em 1em;
+    z-index: 1001;
 }
 
 #button-modal{

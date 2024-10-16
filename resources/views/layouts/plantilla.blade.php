@@ -98,7 +98,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('usuarios.nuevo') }}" class="nav-link {{ $segment == 'usuarios' ? 'active' : '' }}" aria-current="page">
+                        <a href="{{ route('usuarios') }}" class="nav-link {{ $segment == 'usuarios' ? 'active' : '' }}" aria-current="page">
                             <svg class="bi me-2" width="16" height="16">
                                 <use xlink:href="#usuarios" />
                             </svg>
