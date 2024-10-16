@@ -15,7 +15,7 @@ class radioIdController extends Controller
      */
     public function cargaTabla()
     {
-        $radios = radio::all(); // Obtener todos los radios desde la base de datos
+        $radios = radio::paginate(5); // Obtener todos los radios desde la base de datos
 
         return view('radios.actualizar', compact('radios'));
     }
@@ -42,5 +42,22 @@ class radioIdController extends Controller
         // Redireccionar a una ruta después de la creación exitosa
         return redirect()->route('radios.cargaTabla')->with('success', 'Radio creado exitosamente.');
     }
-    
+
+    public function destroy(radio $radios){
+        $radios->delete();
+        return redirect()->route('radios.cargaTabla');
+    }
+
+    public function update(Request $request, radio $radios){
+        $request->validate([
+            'serial' => 'required|string|max:255',
+            'alias' => 'required|string|max:255',
+        ]);
+
+        $radios->serial = $request->input('serial');
+        $radios->alias = $request->input('alias');
+        $radios->save();
+
+        return redirect()->route('radios.cargaTabla');
+    }
 }

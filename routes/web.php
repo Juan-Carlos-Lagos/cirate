@@ -65,12 +65,20 @@ Route::get('/codigo-reporte/{id}', [reporteController::class, 'getCodigoReporteD
   //Radios Routes
   //Ruta pra la busqueda de las grabaciones
   Route::get('/buscarPorFecha', [llamadasRadiosController::class, 'buscarPorFecha'])->name('radios.buscar');
-  // Ruta para mostrar la vista de actualización y creación de radios
-  Route::get('actualizar', [RadioIdController::class, 'cargaTabla'])->name('radios.cargaTabla');
+  
   // Ruta para crear un nuevo radio en la base de datos
   Route::post('crear', [RadioIdController::class, 'nuevoRadio'])->name('radios.nuevoRadio');
+  // Ruta para mostrar la vista de actualización y creación de radios
+  Route::get('actualizar', [RadioIdController::class, 'cargaTabla'])->name('radios.cargaTabla');
 
-  //Usuarios Routes: nuevo es para recepcionar la información y la ruta show es para
+  // Ruta destroy para eliminar radios de la tabla radios
+  Route::delete('/destroy/{radios}', [RadioIdController::class, 'destroy'])->name('radios.destroy');
+
+  // Cuando abrimos el Modal en el botón de editar Radios, esta ruta nos va ayudar a
+  // editar el radio si se requiere
+  Route::put('/radio/update/{radios}', [RadioIdController::class, 'update'])->name('radios.update');
+
+  //Usuarios Routes: nuevo es para recepcionar la información y la ruta usuarios es para
   // mostrar la vista
   Route::post('/nuevo',[UsuariosController::class, 'nuevo'])->name('usuarios.agregar');
   Route::get('/usuarios', [UsuariosController::class, 'usuarios'])->name('usuarios');
