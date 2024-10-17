@@ -69,13 +69,13 @@ Route::get('cargar-detalles', [reporteController::class, 'cargarDetallesUsoLugar
   //Ruta pra la busqueda de las grabaciones
   Route::get('/buscarPorFecha', [llamadasRadiosController::class, 'buscarPorFecha'])->name('radios.buscar');
   
-  // Ruta para crear un nuevo radio en la base de datos
-  Route::post('crear', [RadioIdController::class, 'nuevoRadio'])->name('radios.nuevoRadio');
-  // Ruta para mostrar la vista de actualización y creación de radios
-  Route::get('actualizar', [RadioIdController::class, 'cargaTabla'])->name('radios.cargaTabla');
+  //Radio/actualizar route: nuevo/radio es para recepcionar la información y la ruta radios es para
+  //mostrar la vista
+  Route::post('/nuevo/radio', [RadioIdController::class, 'nuevoradio'])->name('radios.nuevo');
+  Route::get('/mostrar/radios', [RadioIdController::class, 'radios'])->name('radios');
 
   // Ruta destroy para eliminar radios de la tabla radios
-  Route::delete('/destroy/{radios}', [RadioIdController::class, 'destroy'])->name('radios.destroy');
+  Route::delete('/destroy/usuario/{radios}', [RadioIdController::class, 'destroy'])->name('radios.destroy');
 
   // Cuando abrimos el Modal en el botón de editar Radios, esta ruta nos va ayudar a
   // editar el radio si se requiere
@@ -87,7 +87,7 @@ Route::get('cargar-detalles', [reporteController::class, 'cargarDetallesUsoLugar
   Route::get('/usuarios', [UsuariosController::class, 'usuarios'])->name('usuarios');
 
 // Ruta destroy para eliminar usuarios de la tabla usuarios
-  Route::delete('/destroy/{user}', [UsuariosController::class, 'destroy'])->name('nuevo.destroy');
+  Route::delete('/destroy/radio/{user}', [UsuariosController::class, 'destroy'])->name('nuevo.destroy');
 
 // Cuando abrimos el Modal en el botón de editar de Usuarios, esta ruta nos va ayudar a
 // editar el usuario si se requiere

@@ -13,17 +13,17 @@
     <!-- Formulario para crear un nuevo radio -->
     <div class="card mb-4">
       <div class="card-body">
-        <form action="{{ route('radios.nuevoRadio') }}" method="POST">
+        <form action="{{ route('radios.nuevo') }}" method="POST">
           @csrf
           <div class="grid gap-4">
             <div class="grid grid-cols-2 gap-4">
               <div class="space-y-2">
                 <label class="form-label">Nuevo Serial de Radio</label>
-                <input type="text" class="form-control" id="serial" name="serial" placeholder="Ingrese nuevo serial de radio">
+                <input type="text" class="form-control" id="serial" name="serial" placeholder="Ingrese nuevo serial de radio" required>
               </div>
               <div class="space-y-2">
                 <label class="form-label">Nuevo Alias de Radio</label>
-                <input type="text" class="form-control" id="alias" name="alias" placeholder="Ingrese un nuevo alias de radio">
+                <input type="text" class="form-control" id="alias" name="alias" placeholder="Ingrese un nuevo alias de radio" required>
               </div>
             </div>
             <button type="submit" class="btn btn-primary mt-3">
@@ -77,6 +77,6 @@
 
 @include('layouts._partials.modalRadiosActualizar')
 
-<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/radiosactualizar.js') }}"></script>
 
 @endsection

@@ -89,6 +89,6 @@
 
 @include('layouts._partials.modal')
 
-<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/usuarios.js') }}"></script>
 
 @endsection
