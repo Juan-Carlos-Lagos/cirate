@@ -25,13 +25,7 @@ class radioIdController extends Controller
             'alias' => $request->alias,
         ]);
 
-        return redirect()->route('radios');
-    }
-
-    public function destroy(radio $radios){
-        $radios->delete();
-
-        return redirect()->route('radios');
+        return redirect()->route('radios')->with('success', 'Radio creado con éxito');
     }
 
     public function update(Request $request, radio $radios){
@@ -44,6 +38,6 @@ class radioIdController extends Controller
         $radios->alias = $request->input('alias');
         $radios->save();
 
-        return redirect()->route('radios');
+        return redirect()->route('radios')->with('success', 'Radio modificado con éxito');
     }
 }

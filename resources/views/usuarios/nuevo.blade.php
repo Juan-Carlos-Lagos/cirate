@@ -4,6 +4,13 @@
 
 @section('structure')
 
+<!-- Mostrar mensajes de éxito o error -->
+@if (session('success'))
+<div class="alert alert-success" id="success-message">
+    {{ session('success') }}
+</div>
+@endif
+
 <div class="container mt-5">
   <div class="card mb-4">
     <div class="card-body">
@@ -69,11 +76,6 @@
                   data-last-name="{{$us->apellidos}}"
                   data-email="{{$us->email}}"
                   data-rol="{{$us->rol}}">Editar</button>
-                  <form action="{{route('nuevo.destroy', $us->id_usuario)}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                  </form>
                 </div>
               </td>
             </tr>
@@ -90,5 +92,6 @@
 @include('layouts._partials.modal')
 
 <script src="{{ asset('js/usuarios.js') }}"></script>
+<script src="{{ asset('js/alerts.js')}}"></script>
 
 @endsection

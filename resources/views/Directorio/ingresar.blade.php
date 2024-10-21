@@ -4,6 +4,11 @@
 
 @section('structure')
 
+@if (session('success'))
+<div class="alert alert-success" id="success-message">
+    {{ session('success') }}
+</div>
+@endif
 
 <div class="card w-100 max-w-md mx-auto">
     <div class="card-body">
@@ -43,5 +48,7 @@
         </div>
     </form>
 </div>
+
+<script src="{{ asset('js/alerts.js') }}"></script>
 
 @endsection

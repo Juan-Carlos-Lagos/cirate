@@ -21,12 +21,7 @@ class UsuariosController extends Controller
         $user->password = bcrypt($request->input('contraseña'));
         $user->save();
         
-        return redirect()->route('usuarios');
-    }
-
-    public function destroy(User $user){
-        $user->delete();
-        return redirect()->route('usuarios');
+        return redirect()->route('usuarios')->with('success', 'Usuario creado con éxito');
     }
 
     public function update(Request $request, User $user){
@@ -45,6 +40,6 @@ class UsuariosController extends Controller
         $user->rol = $request->input('rol-edit2');
         $user->save();
 
-        return redirect()->route('usuarios');
+        return redirect()->route('usuarios')->with('success', 'Usuario modificado con éxito');
     }
 }

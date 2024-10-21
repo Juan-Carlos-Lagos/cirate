@@ -36,7 +36,7 @@ class directorioController extends Controller
         $telefono->comentario = $request->input('comentario');
         $telefono->save();
 
-        return redirect()->route('ingresar');
+        return redirect()->route('ingresar')->with('success', 'Teléfono creado con éxito');
     }
 
     public function ingresar(){

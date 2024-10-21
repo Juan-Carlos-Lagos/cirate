@@ -3,6 +3,14 @@
 @section('title','Actualizar')
 
 @section('structure')
+
+<!-- Mostrar mensajes de éxito o error -->
+@if (session('success'))
+<div class="alert alert-success" id="success-message">
+    {{ session('success') }}
+</div>
+@endif
+
 <div class="card shadow-sm bg-card text-card-foreground w-full max-w-4xl">
   <div class="card-body">
     <h3 class="card-title text-2xl font-semibold leading-none tracking-tight">
@@ -57,11 +65,6 @@
                     data-idradio="{{$radio->id_radio}}"
                     data-serial="{{$radio->serial}}"
                     data-alias="{{$radio->alias}}">Editar</button>
-                    <form action="{{route('radios.destroy', $radio->id_radio)}}" method="POST">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </form>
                   </div>
                 </td>
               </tr>
@@ -78,5 +81,6 @@
 @include('layouts._partials.modalRadiosActualizar')
 
 <script src="{{ asset('js/radiosactualizar.js') }}"></script>
+<script src="{{ asset('js/alerts.js') }}"></script>
 
 @endsection
