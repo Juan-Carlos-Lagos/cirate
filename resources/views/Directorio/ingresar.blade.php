@@ -50,5 +50,6 @@
 </div>
 
 <script src="{{ asset('js/alerts.js') }}"></script>
+<script src="{{ asset('js/alerts.js')}}"></script>
 
 @endsection

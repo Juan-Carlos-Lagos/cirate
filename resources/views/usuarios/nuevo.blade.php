@@ -58,7 +58,7 @@
               <th>Apellido</th>
               <th>Email</th>
               <th>Rol</th>
-              <th>Acciones</th>
+              <th>Acción</th>
             </tr>
           </thead>
           <tbody>

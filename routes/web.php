@@ -59,11 +59,15 @@ Route::get('cargar-detalles', [reporteController::class, 'cargarDetallesUsoLugar
 
   // Directorio routes
   Route::get('buscar', [directorioController::class, 'buscar'])->name('directorio.buscar');
-  
-// Estás dos rutas son para: la de ingresar nos está enviando la información y la otra ruta
-// store nos está mostrando la vista 
+
+// Estás dos rutas son para: la de store nos está enviando la información y la otra ruta
+// ingresar nos está mostrando la vista de Directorio/ingresar
   Route::post('/store', [directorioController::class, 'store'])->name('store');
   Route::get('/ingresar', [directorioController::class, 'ingresar'])->name('ingresar');
+
+  // Cuando abrimos el Modal en el botón de editar teléfono, esta ruta nos va ayudar
+  // a editar el teléfono si se requiere
+  Route::put('/telefono/update/{telefonos}', [directorioController::class, 'update'])->name('telefono.update');
 
   //Radios Routes
   //Ruta pra la busqueda de las grabaciones

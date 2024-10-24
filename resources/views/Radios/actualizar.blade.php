@@ -51,7 +51,7 @@
               <tr>
                 <th>Serial de Radio</th>
                 <th>Alias de Radio</th>
-                <th>Acciones</th>
+                <th>Acción</th>
               </tr>
             </thead>
             <tbody>

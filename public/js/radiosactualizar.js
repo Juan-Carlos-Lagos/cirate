@@ -9,7 +9,7 @@ radioModal.forEach(button => {
         modal.classList.add('modal--show')
 
         const radioId = this.getAttribute('data-idradio');
-
+        
         const serial = this.getAttribute('data-serial');
         const alias = this.getAttribute('data-alias');
 
