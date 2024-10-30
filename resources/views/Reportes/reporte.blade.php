@@ -159,8 +159,7 @@
                             @endforeach
                             <option value="otroTipoPropiedad">Otro</option>
                         </select>
-
-                        <input type="text" class="form-control mt-2" id="otroTipoPropiedad" name="otroTipoPropiedad" placeholder="Especificar" style="display: none;" disabled>
+                        {{-- <input type="text" class="form-control mt-2" id="otroTipoPropiedad" name="otroTipoPropiedad" placeholder="Especificar" style="display: none;" disabled> --}}
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="companiaAseguradora">Compañía Aseguradora</label>
@@ -171,7 +170,7 @@
                             @endforeach
                             <option value="otroTipoAseguradora">Otro</option>
                         </select>
-                        <input type="text" class="form-control mt-2" id="nombreCompaniaAseguradora" name="nombreCompaniaAseguradora" placeholder="Especificar" style="display: none;" disabled>
+                        {{-- <input type="text" class="form-control mt-2" id="nombreCompaniaAseguradora" name="nombreCompaniaAseguradora" placeholder="Especificar" style="display: none;" disabled> --}}
                     </div>
                 </div>
 
@@ -584,10 +583,14 @@
 
     </form>
 
-
-
     <!-- fin primera cart -->
 </div>
+
+@include('layouts._partials.modalUsoLugar')
+@include('layouts._partials.modalTipoPropiedad')
+@include('layouts._partials.modalCompaniaAseguradora')
+
+<script src="{{ asset('js/reportes.js') }}"></script>
 
 @endsection
 
