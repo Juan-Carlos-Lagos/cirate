@@ -17,7 +17,8 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    {{-- Estilos modal de Usuarios/nuevo, radios/actualizar, Directorio/buscar, Reportes/UsoDelLugar --}}
+    {{-- Estilos modal de Usuarios/nuevo, radios/actualizar, Directorio/buscar, Reportes/UsoDelLugar,
+    TipoPropiedad, CompañiaAseguradora --}}
     <link rel="stylesheet" href="{{ asset('css/modal.css')}}">
 
     {{-- Funcionamiento lista desplegable Usuarios, botón editar --}}
