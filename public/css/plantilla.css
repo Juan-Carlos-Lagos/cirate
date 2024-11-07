@@ -1,3 +1,18 @@
+html, body {
+  height: 100%; /* Asegura que el body ocupe toda la altura */
+  margin: 0; /* Elimina márgenes por defecto */
+}
+
+.row.w-100 {
+  display: flex; /* Usar flexbox para alinear columnas */
+  min-height: 100vh; /* Altura mínima de la fila */
+}
+
+.p-3 {
+  flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+  flex-grow: 1; /* Hace que el sidebar ocupe todo el espacio disponible */
+}
+
 .nav-item.active {
     background-color: #007bff; 
 }
